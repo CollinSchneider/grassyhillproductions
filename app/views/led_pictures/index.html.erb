@@ -42,6 +42,15 @@
     gifSwap($(this))
   })
 
+  $('.gif').click(function(){
+    var ledDiv = $(this).parent();
+    var image = ledDiv.find('.image')
+    var playButton = ledDiv.find('.play-button')
+    $(this).attr('class', 'responsive-img gif hidden')
+    image.attr('class', 'responsive-img image')
+    playButton.attr('class', 'responsive-img play-button')
+  })
+
   function gifSwap(image){
     var ledDiv = image.parent();
     var gif = ledDiv.find('.gif');

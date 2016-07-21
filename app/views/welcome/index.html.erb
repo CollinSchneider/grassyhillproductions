@@ -1,10 +1,13 @@
 
 
-<h1>Welcome</h1>
+<h1 class="center-align">Grassy Hill Productions</h1>
 
+<div class="col s12 center-align">
+  <img src="/logo.png" alt="" class="responsive-img" />
+</div>
 
 <div class="row">
-  <div class="col s4 center-align border">
+  <div class="col s4 center-align">
     <a href="/greeting_cards">
       <h3>Greeting Cards</h3>
       <% if @greeting_card_picture %>
@@ -12,7 +15,7 @@
       <% end %>
     </a>
   </div>
-  <div class="col s4 center-align border">
+  <div class="col s4 center-align">
     <a href="/led_pictures">
       <h3>LED Pictures</h3>
       <% if @led_picture %>
@@ -20,7 +23,7 @@
       <% end %>
     </a>
   </div>
-  <div class="col s4 center-align border">
+  <div class="col s4 center-align">
     <a href="/guitar_string_bracelets">
       <h3>Guitar String Bracelets</h3>
       <% if @guitar_string_bracelet_picture %>
