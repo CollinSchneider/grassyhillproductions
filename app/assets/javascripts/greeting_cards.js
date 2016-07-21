@@ -8,7 +8,7 @@ $(document).ready(function(){
     var cardDiv = $(this).parent().parent().parent().parent().parent();
     cardDiv.find('.previous').attr('class', 'previous')
     cardDiv.find('.front-image').attr('class', 'hidden responsive-img front-image')
-    cardDiv.find('.inside-image').attr('class', 'responsive-img inside-image')
+    cardDiv.find('.inside-image').attr('class', 'border responsive-img inside-image')
   })
 
   $('.previous').click(function(){
@@ -16,6 +16,6 @@ $(document).ready(function(){
     var cardDiv = $(this).parent().parent().parent().parent().parent();
     cardDiv.find('.next').attr('class', 'next')
     cardDiv.find('.inside-image').attr('class', 'hidden responsive-img inside-image')
-    cardDiv.find('.front-image').attr('class', 'responsive-img front-image')
+    cardDiv.find('.front-image').attr('class', 'border responsive-img front-image')
   })
 })

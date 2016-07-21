@@ -7,7 +7,9 @@
   <div class="col s4 center-align border">
     <a href="/greeting_cards">
       <h3>Greeting Cards</h3>
-      <%= image_tag @greeting_card_picture.front_image.url(:medium), :class => 'responsive-img' %>
+      <% if @greeting_card_picture %>
+        <%= image_tag @greeting_card_picture.front_image.url(:medium), :class => 'responsive-img' %>
+      <% end %>
     </a>
   </div>
   <div class="col s4 center-align border">

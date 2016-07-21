@@ -1,28 +1,4 @@
 
-<div class="row">
-  <div class="col s6 offset-s3">
-    <%= form_for GreetingCard.new do |f| %>
-      <div class="input-field">
-        <%= f.label "Code" %>
-        <%= f.text_field :code %>
-      </div>
-      <div class="input-field">
-        <%= f.label "Front Image" %>
-        <%= f.file_field :front_image %>
-      </div>
-      <div class="input-field">
-        <%= f.label "Inside Image" %>
-        <%= f.file_field :inside_image %>
-      </div>
-      <div class="input-field">
-        <%= f.label "Category" %>
-        <%= f.select :category, ['Birthday', 'Sympathy', 'Thank You', 'Love', 'Congratulations', 'Anniversary']%>
-      </div>
-      <%= f.submit "Create" %>
-    <% end %>
-  </div>
-</div>
-
 <h2 class="center-align">Greeting Cards</h2>
 
 <div class="row center-align">
