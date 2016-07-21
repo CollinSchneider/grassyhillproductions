@@ -1,0 +1,31 @@
+<% @cards.each_slice(3) do |slice| %>
+  <div class="row col s12 center-align">
+    <% slice.each do |card| %>
+      <div id="card" class="col s3 no-padding center-align" style="margin: 0 auto">
+        <div class="row col s12">
+          <div class="row border valign-wrapper">
+            <div class="col s1 valign-wrapper">
+              <a>
+                <h6 class="hidden previous">Close</h6>
+              </a>
+            </div>
+            <div class="col s10">
+              <%= image_tag card.front_image.url(:medium), :class => 'responsive-img front-image no-pading no-margin' %>
+              <%= image_tag card.inside_image(:medium), :class => 'hidden responsive-img inside-image no-pading no-margin' %>
+            </div>
+            <div class="col s1 valign-wrapper no-padding">
+              <a>
+                <h6 class="next no-padding">Open</h6>
+              </a>
+            </div>
+          </div>
+          <div class="row border">
+            <div class="col s12">
+              <h3><%= card.code %></h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>

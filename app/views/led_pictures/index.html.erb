@@ -1,0 +1,95 @@
+<div class="col s6 offset-s3">
+  <div class="row">
+    <%= form_for LedPicture.new do |f| %>
+    <div class="input-field">
+      <%= f.label "Code" %>
+      <%= f.text_field :code %>
+    </div>
+    <div class="input-field">
+      <%= f.label "Image" %>
+      <%= f.file_field :image %>
+    </div>
+    <div class="input-field">
+      <%= f.label "GIF" %>
+      <%= f.file_field :gif %>
+    </div>
+    <%= f.submit "Create" %>
+    <% end %>
+  </div>
+</div>
+
+<h1 class="center-align">LED Pictu<span id="flicker">r</span>es</h1>
+
+<% @led_pictures.each_slice(3) do |slice| %>
+  <div class="row">
+    <% slice.each do |led| %>
+      <div class="col s4 led-picture">
+        <img src="/play.png" alt="" class="play-button responsive-img" />
+        <%= image_tag led.image.url(:medium), :class => "responsive-img image" %>
+        <%= image_tag led.gif.url(:medium), :class => "responsive-img hidden gif" %>
+        <h4>GHP <%= led.code %></h4>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+<script>
+  $('.image').mouseover(function(){
+    gifSwap($(this))
+  })
+
+  $('.image').click(function(){
+    gifSwap($(this))
+  })
+
+  function gifSwap(image){
+    var ledDiv = image.parent();
+    var gif = ledDiv.find('.gif');
+    var playButton = ledDiv.find('.play-button')
+    $('.gif').each(function(){
+      $(this).attr('class', 'responsive-img gif hidden')
+    })
+    $('.image').each(function(){
+      $(this).attr('class', 'responsive-img image')
+    })
+    $('.play-button').each(function(){
+      $(this).attr('class', 'responsive-img play-button')
+    })
+    image.attr('class', 'responsive-img image hidden');
+    playButton.attr('class', 'responsive-img play-button hidden')
+    gif.attr('class', 'responsive-img gif');
+  }
+
+  flicker()
+
+  function changeToYellow(){
+    $('#flicker').css({
+      color: 'yellow'
+    })
+  }
+
+  function changeToBlack(){
+    $('#flicker').css({
+      color: 'black'
+    })
+  }
+
+  function changeColors(){
+    changeToYellow()
+    setTimeout(changeToBlack, 250)
+    setTimeout(changeToYellow, 500)
+    setTimeout(changeToBlack, 750)
+    setTimeout(changeToYellow, 1250)
+    setTimeout(changeToBlack, 1500)
+    setTimeout(changeToYellow, 2000)
+    setTimeout(changeToBlack, 2500)
+    setTimeout(changeToYellow, 2600)
+    setTimeout(changeToBlack, 2750)
+    setTimeout(changeToYellow, 2850)
+    setTimeout(changeToBlack, 3000)
+  }
+
+  function flicker() {
+    setInterval(changeColors, 5000)
+  }
+</script>

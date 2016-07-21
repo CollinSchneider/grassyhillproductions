@@ -1,0 +1,29 @@
+
+
+<h1>Welcome</h1>
+
+
+<div class="row">
+  <div class="col s4 center-align border">
+    <a href="/greeting_cards">
+      <h3>Greeting Cards</h3>
+      <%= image_tag @greeting_card_picture.front_image.url(:medium), :class => 'responsive-img' %>
+    </a>
+  </div>
+  <div class="col s4 center-align border">
+    <a href="/led_pictures">
+      <h3>LED Pictures</h3>
+      <% if @led_picture %>
+        <%= image_tag @led_picture.image.url(:medium), :class => 'responsive-img' %>
+      <% end %>
+    </a>
+  </div>
+  <div class="col s4 center-align border">
+    <a href="/guitar_string_bracelets">
+      <h3>Guitar String Bracelets</h3>
+      <% if @guitar_string_bracelet_picture %>
+        <%= image_tag @guitar_string_bracelet_picture.image.url(:medium), :class => 'responsive-img' %>
+      <% end %>
+    </a>
+  </div>
+</div>
