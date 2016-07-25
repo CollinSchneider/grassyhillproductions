@@ -20,10 +20,10 @@
 
 <h1 class="center-align">LED Pictu<span id="flicker">r</span>es</h1>
 
-<% @led_pictures.each_slice(3) do |slice| %>
+<% @led_pictures.each_slice(4) do |slice| %>
   <div class="row">
     <% slice.each do |led| %>
-      <div class="col s12 m4 led-picture center-align">
+      <div class="col s12 m3 led-picture center-align">
         <img src="/play.png" alt="" class="play-button responsive-img" />
         <%= image_tag led.image.url(:medium), :class => "responsive-img image" %>
         <%= image_tag led.gif.url(:medium), :class => "responsive-img hidden gif" %>
