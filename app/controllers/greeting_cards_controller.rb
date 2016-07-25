@@ -14,6 +14,10 @@ class GreetingCardsController < ApplicationController
   def index
     @birthday_picture = GreetingCard.where('category = ?', 'Birthday').first if GreetingCard.all.length > 0
     @anniversary_picture = GreetingCard.where('category = ?', 'Anniversary').first if GreetingCard.all.length > 0
+    @sympathy_picture = GreetingCard.where('category = ?', 'Sympathy').first if GreetingCard.all.length > 0
+    @thank_you_picture = GreetingCard.where('category = ?', 'Thank You').first if GreetingCard.all.length > 0
+    @love_picture = GreetingCard.where('category = ?', 'Love').first if GreetingCard.all.length > 0
+    @congratulations_picture = GreetingCard.where('category = ?', 'Congratulations').first if GreetingCard.all.length > 0
   end
 
   def birthday

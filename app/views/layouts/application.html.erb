@@ -2,15 +2,20 @@
 <html>
 <head>
   <title>GrassyHillProudctions</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => false %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => false %>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <%= csrf_meta_tags %>
 </head>
 <body>
-
   <nav>
     <div class="nav-wrapper">
       <a href="/" class="brand-logo">Grassy Hill Productions</a>
+      <a class="right hide-on-large-only dropdown-button" href="#!" data-activates="dropdown1"><i class="material-icons right">toc</i></a>
+      <ul id="dropdown1" class="dropdown-content hide-on-large-only right">
+        <li><a href="/about">About Us</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="/about">About Us</a></li>
         <li><a href="/contact">Contact</a></li>

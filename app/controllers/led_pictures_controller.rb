@@ -12,7 +12,7 @@ class LedPicturesController < ApplicationController
   end
 
   def index
-    @led_pictures = LedPicture.all
+    @led_pictures = LedPicture.all.order(code: :asc)
   end
 
   private
