@@ -31,3 +31,23 @@
     <% end %>
   </div>
 <% end %>
+
+<script>
+  $(document).ready(function(){
+    $('.next').click(function(){
+      $(this).attr('class', 'next hidden')
+      var cardDiv = $(this).parent().parent().parent().parent().parent();
+      cardDiv.find('.previous').attr('class', 'previous')
+      cardDiv.find('.front-image').attr('class', 'hidden responsive-img front-image')
+      cardDiv.find('.inside-image').attr('class', 'border responsive-img inside-image')
+    })
+
+    $('.previous').click(function(){
+      $(this).attr('class', 'previous hidden')
+      var cardDiv = $(this).parent().parent().parent().parent().parent();
+      cardDiv.find('.next').attr('class', 'next')
+      cardDiv.find('.inside-image').attr('class', 'hidden responsive-img inside-image')
+      cardDiv.find('.front-image').attr('class', 'border responsive-img front-image')
+    })
+  })
+</script>
