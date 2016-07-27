@@ -27,7 +27,21 @@
         <img src="/play.png" alt="" class="play-button responsive-img" />
         <%= image_tag led.image.url(:medium), :class => "responsive-img image" %>
         <%= image_tag led.gif.url(:medium), :class => "responsive-img hidden gif" %>
+        <h4><%= led.title %></h4>
         <h4>GHP <%= led.code %></h4>
+
+        <%= form_for led do |f| %>
+          <div class="input-field">
+            <%= f.label :code %>
+            <%= f.text_field :code %>
+          </div>
+          <div class="input-field">
+            <%= f.label :title %>
+            <%= f.text_field :title %>
+          </div>
+          <%= f.submit "Update" %>
+        <% end %>
+
       </div>
     <% end %>
   </div>
