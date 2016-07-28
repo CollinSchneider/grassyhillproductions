@@ -28,7 +28,7 @@
         <%= image_tag led.image.url(:medium), :class => "responsive-img image" %>
         <%= image_tag led.gif.url(:medium), :class => "responsive-img hidden gif" %>
         <h4><%= led.title %></h4>
-        <h4>GHP <%= led.code %></h4>
+        <h4><%= led.code %></h4>
 
         <%= form_for led do |f| %>
           <div class="input-field">
