@@ -1,10 +1,10 @@
 
-<h2 class="center-align">Greeting Cards</h2>
+<h2 class="center-align trochut">Greeting Cards</h2>
 
 <div class="row center-align">
-  <div class="col s4 border">
+  <div class="col s4">
     <a href="/cards/birthday">
-      <h4>Birthday</h4>
+      <h4 class="trochut">Birthday</h4>
       <% if @birthday_picture %>
         <%= image_tag @birthday_picture.front_image.url(:medium), :class => 'responsive-img' %>
       <% end %>
@@ -12,7 +12,7 @@
   </div>
   <div class="col s4 ">
     <a href="/cards/sympathy">
-      <h4>Sympathy</h4>
+      <h4 class="trochut">Sympathy</h4>
       <% if @sympathy_picture %>
         <%= image_tag @sympathy_picture.front_image.url(:medium), :class => 'responsive-img' %>
       <% end %>
@@ -20,7 +20,7 @@
   </div>
   <div class="col s4 ">
     <a href="/cards/thank_you">
-      <h4>Thank You</h4>
+      <h4 class="trochut">Thank You</h4>
       <% if @thank_you_picture %>
         <%= image_tag @thank_you_picture.front_image.url(:medium), :class => 'responsive-img' %>
       <% end %>
@@ -30,7 +30,7 @@
 <div class="row center-align">
   <div class="col s4 ">
     <a href="/cards/love">
-      <h4>Love</h4>
+      <h4 class="trochut">Love</h4>
       <% if @love_picture %>
         <%= image_tag @love_picture.front_image.url(:medium), :class => 'responsive-img' %>
       <% end %>
@@ -38,7 +38,7 @@
   </div>
   <div class="col s4 ">
     <a href="/cards/congratulations">
-      <h4>Congratulations</h4>
+      <h4 class="trochut">Congratulations</h4>
       <% if @congratulations_picture %>
         <%= image_tag @congratulations_picture.front_image.url(:medium), :class => 'responsive-img' %>
       <% end %>
@@ -46,7 +46,7 @@
   </div>
   <div class="col s4 ">
     <a href="/cards/anniversary">
-      <h4>Anniversary</h4>
+      <h4 class="trochut">Anniversary</h4>
       <% if @anniversary_picture %>
         <%= image_tag @anniversary_picture.front_image.url(:medium), :class => 'responsive-img' %>
       <% end %>
