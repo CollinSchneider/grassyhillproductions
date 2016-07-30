@@ -12,8 +12,8 @@
               </a>
             </div>
             <div class="col s9 center-align">
-              <%= image_tag card.front_image.url(:medium), :class => 'border responsive-img front-image' %>
-              <%= image_tag card.inside_image(:medium), :class => 'border hidden responsive-img inside-image' %>
+              <%= image_tag card.front_image.url(:large), :class => 'border responsive-img front-image' %>
+              <%= image_tag card.inside_image(:large), :class => 'border hidden responsive-img inside-image' %>
             </div>
             <div class="col s1 valign-wrapper no-padding">
               <a>
@@ -23,7 +23,7 @@
           </div>
           <div class="row">
             <div class="col s12">
-              <h3 class="trochut"><%= card.code %></h3>
+              <h3 class="oswald"><%= card.code %></h3>
             </div>
           </div>
         </div>
