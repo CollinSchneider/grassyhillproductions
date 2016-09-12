@@ -3,7 +3,7 @@
 <% @cards.each_slice(3) do |slice| %>
   <div class="row col s12 center-align">
     <% slice.each do |card| %>
-      <div id="card" class="col s12 m4 no-padding center-align" style="margin: 0 auto">
+      <div id="card" class="col s12 m4 no-padding center-align" style="margin: 0 auto; cursor: pointer">
         <div class="row col s12">
           <div class="row valign-wrapper">
             <div class="col s1 valign-wrapper">
@@ -12,8 +12,8 @@
               </a>
             </div>
             <div class="col s9 center-align">
-              <%= image_tag card.front_image.url(:large), :class => 'border responsive-img front-image' %>
-              <%= image_tag card.inside_image(:large), :class => 'border hidden responsive-img inside-image' %>
+              <%= image_tag card.front_image.url(:large), :class => 'border responsive-img front-image materialboxed' %>
+              <%= image_tag card.inside_image(:large), :class => 'border hidden responsive-img inside-image materialboxed' %>
             </div>
             <div class="col s1 valign-wrapper no-padding">
               <a>
@@ -38,16 +38,16 @@
       $(this).attr('class', 'next hidden')
       var cardDiv = $(this).parent().parent().parent().parent().parent();
       cardDiv.find('.previous').attr('class', 'previous')
-      cardDiv.find('.front-image').attr('class', 'hidden responsive-img front-image')
-      cardDiv.find('.inside-image').attr('class', 'border responsive-img inside-image')
+      cardDiv.find('.front-image').attr('class', 'hidden responsive-img front-image materialboxed')
+      cardDiv.find('.inside-image').attr('class', 'border responsive-img inside-image materialboxed')
     })
 
     $('.previous').click(function(){
       $(this).attr('class', 'previous hidden')
       var cardDiv = $(this).parent().parent().parent().parent().parent();
       cardDiv.find('.next').attr('class', 'next')
-      cardDiv.find('.inside-image').attr('class', 'hidden responsive-img inside-image')
-      cardDiv.find('.front-image').attr('class', 'border responsive-img front-image')
+      cardDiv.find('.inside-image').attr('class', 'hidden responsive-img inside-image materialboxed')
+      cardDiv.find('.front-image').attr('class', 'border responsive-img front-image materialboxed')
     })
   })
 </script>
