@@ -7,7 +7,7 @@
       <div class="col s12 m3 led-picture center-align">
         <img src="/play.png" alt="" class="play-button responsive-img" />
         <%= image_tag led.image.url(:medium), :class => "responsive-img image" %>
-        <%= image_tag led.gif.url(:medium), :class => "responsive-img hidden gif" %>
+        <%= image_tag led.gif.url(:medium), :class => "responsive-img hidden gif materialboxed" %>
         <h5 class="trochut"><%= led.title %></h5>
         <h5 class = "oswald"><%= led.code %></h5>
       </div>
@@ -58,39 +58,6 @@
     })
     image.attr('class', 'responsive-img image hidden');
     playButton.attr('class', 'responsive-img play-button hidden')
-    gif.attr('class', 'responsive-img gif');
-  }
-
-  flicker()
-
-  function changeToYellow(){
-    $('#flicker').css({
-      color: 'yellow'
-    })
-  }
-
-  function changeToBlack(){
-    $('#flicker').css({
-      color: 'black'
-    })
-  }
-
-  function changeColors(){
-    changeToYellow()
-    setTimeout(changeToBlack, 250)
-    setTimeout(changeToYellow, 500)
-    setTimeout(changeToBlack, 750)
-    setTimeout(changeToYellow, 1250)
-    setTimeout(changeToBlack, 1500)
-    setTimeout(changeToYellow, 2000)
-    setTimeout(changeToBlack, 2500)
-    setTimeout(changeToYellow, 2600)
-    setTimeout(changeToBlack, 2750)
-    setTimeout(changeToYellow, 2850)
-    setTimeout(changeToBlack, 3000)
-  }
-
-  function flicker() {
-    setInterval(changeColors, 5000)
+    gif.attr('class', 'responsive-img gif materialboxed');
   }
 </script>
