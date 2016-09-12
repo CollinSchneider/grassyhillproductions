@@ -1,11 +1,11 @@
 
 <h1 class="center-align trochut" style="text-decoration:underline">Back-Lit Canvas Art</h1>
 
-<% @led_pictures.each_slice(4) do |slice| %>
+<% @led_pictures.each_slice(2) do |slice| %>
   <div class="row">
     <% slice.each do |led| %>
-      <div class="col s12 m3 led-picture center-align">
-        <img src="/play.png" alt="" class="play-button responsive-img" />
+      <div class="col s12 m6 led-picture center-align">
+        <!-- <img src="/play.png" alt="" class="play-button responsive-img" /> -->
         <%= image_tag led.image.url(:medium), :class => "responsive-img image" %>
         <%= image_tag led.gif.url(:medium), :class => "responsive-img hidden gif" %>
         <h5 class="trochut"><%= led.title %></h5>
@@ -37,27 +37,27 @@
   $('.gif').click(function(){
     var ledDiv = $(this).parent();
     var image = ledDiv.find('.image')
-    var playButton = ledDiv.find('.play-button')
+    // var playButton = ledDiv.find('.play-button')
     $(this).attr('class', 'responsive-img gif hidden')
     image.attr('class', 'responsive-img image')
-    playButton.attr('class', 'responsive-img play-button')
+    // playButton.attr('class', 'responsive-img play-button')
   })
 
   function gifSwap(image){
     var ledDiv = image.parent();
     var gif = ledDiv.find('.gif');
-    var playButton = ledDiv.find('.play-button')
+    // var playButton = ledDiv.find('.play-button')
     $('.gif').each(function(){
       $(this).attr('class', 'responsive-img gif hidden')
     })
     $('.image').each(function(){
       $(this).attr('class', 'responsive-img image')
     })
-    $('.play-button').each(function(){
-      $(this).attr('class', 'responsive-img play-button')
-    })
+    // $('.play-button').each(function(){
+    //   $(this).attr('class', 'responsive-img play-button')
+    // })
     image.attr('class', 'responsive-img image hidden');
-    playButton.attr('class', 'responsive-img play-button hidden')
+    // playButton.attr('class', 'responsive-img play-button hidden')
     gif.attr('class', 'responsive-img gif');
   }
 </script>
