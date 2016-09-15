@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160727222044) do
+ActiveRecord::Schema.define(version: 20160915195850) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20160727222044) do
     t.string   "inside_image_content_type"
     t.integer  "inside_image_file_size"
     t.datetime "inside_image_updated_at"
+    t.decimal  "wholesale_price"
   end
 
   create_table "guitar_string_bracelets", force: :cascade do |t|
@@ -40,6 +41,7 @@ ActiveRecord::Schema.define(version: 20160727222044) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.decimal  "wholesale_price"
   end
 
   create_table "led_pictures", force: :cascade do |t|
@@ -55,6 +57,7 @@ ActiveRecord::Schema.define(version: 20160727222044) do
     t.integer  "gif_file_size"
     t.datetime "gif_updated_at"
     t.string   "title"
+    t.decimal  "wholesale_price"
   end
 
 end
