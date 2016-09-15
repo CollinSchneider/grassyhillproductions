@@ -1,0 +1,21 @@
+<div class="row center-align">
+  <h4>Thank you for your order!</h4>
+  <div class="row">
+    <h5>Here is an overview:</h5>
+    <div class="row">
+      Shipping to:
+      <%= @order.shipping_address.street_one %>
+    </div>
+    <% @order.order_items.each do |item| %>
+      <div class="row col s8 offset-s2 border">
+        <div class="col s4">
+          <%= image_tag item.product.image.url(:medium), :class => 'responsive-img' %>
+        </div>
+        <div class="col s8">
+          <h6>$<%= '%.2f' % item.product.price %></h6>
+          <h6><%= item.product.code %> x <%= item.quantity %></h6>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+<div class="row">
+
+  <h1>Sign Up</h1>
+
+  <%= form_for User.new do |f| %>
+    <div class="input-field">
+      <label>Email</label>
+      <input type="email" name="user[email]" required>
+    </div>
+    <div class="input-field">
+      <label>Password</label>
+      <input type="password" name="user[password]" required>
+    </div>
+    <div class="input-field">
+      <label>Confirm Password</label>
+      <input type="password" name="user[password_confirmation]" required>
+      <% if !params[:redirect_url].nil? %>
+        <input type="hidden" name="redirect_url" value="<%= params[:redirect_url] %>">
+      <% end %>
+    </div>
+    <% if !flash[:error].nil? %>
+      <% errs = [] %>
+      <% flash[:error].each do |err| %>
+        <% if !errs.include?(err) %>
+          <% errs.push(err) %>
+          <h6 class='red-text'><%= err %></h6>
+        <% end %>
+      <% end %>
+    <% end %>
+    <input type="submit" value="Sign Up" class='btn'>
+  <% end %>
+
+</div>

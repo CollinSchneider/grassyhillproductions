@@ -1,0 +1,168 @@
+<div class="row center-align">
+  <h5>Checkout</h5>
+
+  <% current_user.retailer.cart_items.each do |cart| %>
+  <div class="col s8 offset-s2 border">
+    <div class='row'>
+      <div class="col s4">
+        <%= image_tag cart.product.image.url(:medium), :class => 'responsive-img' %>
+      </div>
+      <div class="col s8">
+        <div class="row">
+          <h4><%= cart.product.code %> x <%= cart.quantity %></h4>
+          <h5>$<%= '%.2f' % cart.price %></h5>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
+
+  <% if !current_user.retailer.shipping_addresses.any? %>
+    <div class="row col s12">
+      <%= form_for ShippingAddress.new do |f| %>
+        <input type="hidden" name="shipping_address[retailer_id]" value="<%= current_user.retailer.id%>">
+        <div class="input-field">
+          <label>Name</label>
+          <input type="text" name="shipping_address[name]" required>
+        </div>
+        <div class="input-field">
+          <label>Street One</label>
+          <input type="text" name="shipping_address[street_one]" required>
+        </div>
+        <div class="input-field">
+          <label>Street Two</label>
+          <input type="text" name="shipping_address[street_two]">
+        </div>
+        <div class="input-field">
+          <label>City</label>
+          <input type="text" name="shipping_address[city]" required>
+        </div>
+        <div class="input-field">
+          <label>Zip</label>
+          <input type="text" name="shipping_address[zip]" required>
+        </div>
+        <div class="input-field">
+          <label>State</label>
+          <input type="text" name="shipping_address[state]" required>
+        </div>
+        <input type="submit" value="Add Address" class='btn'>
+      <% end %>
+
+    <% else %>
+
+    <div class="col s12">
+      <h6>Select your shipping address:</h6>
+      <% current_user.retailer.shipping_addresses.each do |sa| %>
+        <p>
+          <div class="row">
+            <input name="address" type="radio" id="<%= sa.id %>" data="<%= sa.id %>" class="radio-address" />
+            <label for="<%= sa.id %>">
+              <h6><%= sa.name %></h6>
+              <h6><%= sa.street_one %></h6>
+              <% if !sa.street_two.nil? || sa.street_two != '' %>
+              <h6><%= sa.street_two %></h6>
+              <% end %>
+              <h6><%= sa.zip %> <%= sa.city %>, <%= sa.state %></h6>
+            </label>
+          </div>
+        </p>
+        <% end %>
+      </div>
+    </div>
+
+  <% end %>
+
+  <% if current_user.retailer.needs_credit_card? %>
+    <div class="row col 12 center-align">
+      <form action='/retailers/add_credit_card' method="post" class='add-credit-card'>
+        <div class="input-field">
+          <label>Name</label>
+          <input type="text" class='card-name' data-stripe='name'>
+        </div>
+        <div class="input-field">
+          <label>Card Number</label>
+          <input type="text" class='card-number' data-stripe='number'>
+        </div>
+        <div class="input-field">
+          <label>Card CVC</label>
+          <input type="text" class='card-cvc' data-stripe='cvc'>
+        </div>
+        <div class="input-field">
+          <div class="row">
+            <div class="col s6">
+              <label>Expiration Month</label>
+              <input type="text" data-stripe='exp_month'>
+            </div>
+            <div class="col s6">
+              <label>Expiration Year</label>
+              <input type="text" data-stripe='exp_year'>
+            </div>
+          </div>
+        </div>
+        <h6 class='red-text payment-errors'></h6>
+        <input type="submit" value="Add Credit Card" class='submit btn'>
+      </form>
+    </div>
+
+  <% else %>
+
+    <div class="row center-align col s12">
+      <h6>Select your credit card:</h6>
+      <% current_user.retailer.credit_cards.each do |card| %>
+        <p>
+          <div class="row">
+            <input name="card" type="radio" id="<%= card.id %>" data="<%= card.id %>" class="radio-card" />
+            <label for="<%= card.id %>">
+              <h6><%= card.brand %>: **** **** **** <%= card.last4 %></h6>
+              <h6>Exp: <%= card.exp_month %>/<%= card.exp_year %></h6>
+            </label>
+          </div>
+        </p>
+      <% end %>
+    </div>
+
+  <% end %>
+
+<div class="center-align">
+  <h6 class='red-text'><%= flash[:error] %></h6>
+  <%= form_tag('/retailers/checkout') do %>
+    <%= hidden_field_tag :stripe_card_id, "", class: 'card_id' %>
+    <%= hidden_field_tag :shipping_id, "", class: 'shipping_id' %>
+    <%= submit_tag "Complete order", :class => 'btn' %>
+  <% end %>
+</div>
+
+</div>
+
+<script>
+  $('.add-credit-card').submit(function(e){
+    e.preventDefault()
+    var form = $(this)
+    form.find('.submit').prop('disabled', true)
+    Stripe.card.createToken(form, stripeResponseHandler);
+  })
+
+  function stripeResponseHandler(status, response) {
+    var $form = $('.add-credit-card');
+
+    if (response.error) {
+      $form.find('.payment-errors').text(response.error.message);
+      $form.find('.submit').prop('disabled', false);
+    } else {
+      var token = response.id;
+      $form.append($('<input type="hidden" name="stripeToken">').val(token));
+      $form.get(0).submit();
+    }
+  };
+
+  $('.radio-card').click(function(){
+    var cardId = $(this).attr('data');
+    $('.card_id').val(cardId)
+  })
+
+  $('.radio-address').click(function(){
+    var addressId = $(this).attr('data')
+    $('.shipping_id').val(addressId)
+    console.log(addressId);
+  })
+</script>
