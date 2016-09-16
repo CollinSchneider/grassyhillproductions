@@ -1,24 +1,6 @@
 
 <div class="center-align row">
 
-  <div class="center-align row">
-    <%= form_for GreetingCard.new do |f| %>
-      <div class="input-field">
-        <label>Front Image</label>
-        <%= f.file_field :front_image %>
-      </div>
-      <div class="input-field">
-        <label>Inside Image</label>
-        <%= f.file_field :inside_image %>
-      </div>
-      <div class="input-field">
-        <label>Code</label>
-        <%= f.text_field :code %>
-      </div>
-      <%= f.hidden_field :category, :value => 'Sympathy' %>
-      <%= f.submit %>
-    <% end %>
-
   <h2 class="trochut" style="text-decoration:underline">Sympathy</h2>
 
   <%= render partial: "card_partial" %>
