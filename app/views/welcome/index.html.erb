@@ -1,26 +1,32 @@
 
 
 
-<!-- <div class="col s12 center-align">
+<div class="col s12 center-align">
   <h1 class="center-align logo">Grassy Hill Productions</h1>
   <img src="/logo.png" alt="" class="responsive-img" />
-</div> -->
+</div>
 
 <div class="row">
   <div class="col s12 m4 center-align">
     <a href="/greeting_cards">
       <h3 class="trochut black-text" style="text-decoration:underline">Greeting Cards</h3>
+<<<<<<< HEAD
       <!-- <#% if @greeting_card_picture %>
         <#%= image_tag @greeting_card_picture.front_image.url(:large), :class => 'responsive-img' %>
       <#% end %> -->
+=======
+      <% if @greeting_card_picture %>
+        <%= image_tag @greeting_card_picture.front_image.url(:large), :class => 'responsive-img' %>
+      <% end %>
+>>>>>>> 87f3ddc23d56bc9cf440d86a8a5ce27077411e27
     </a>
   </div>
   <div class="col s12 m4 center-align">
     <a href="/led_pictures">
       <h3 class="trochut black-text" style="text-decoration:underline">Back-Lit Canvas Art</h3>
-      <!-- <#% if @led_picture %>
-        <#%= image_tag @led_picture.image.url(:medium), :class => 'responsive-img' %>
-      <#% end %> -->
+      <% if @led_picture %>
+        <%= image_tag @led_picture.image.url(:medium), :class => 'responsive-img' %>
+      <% end %>
     </a>
   </div>
   <div class="col s12 m4 center-align">
