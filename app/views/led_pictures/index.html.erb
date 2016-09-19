@@ -3,25 +3,25 @@
 
 
 <div class="center-align row">
-  <%= form_for LedPicture.new do |f| %>
+  <!-- <#%= form_for LedPicture.new do |f| %>
     <div class="input-field">
       <label>Image</label>
-      <%= f.file_field :image %>
+      <#%= f.file_field :image %>
     </div>
     <div class="input-field">
       <label>Gif</label>
-      <%= f.file_field :gif %>
+      <#%= f.file_field :gif %>
     </div>
     <div class="input-field">
       <label>Code</label>
-      <%= f.text_field :code %>
+      <#%= f.text_field :code %>
     </div>
     <div class="input-field">
       <label>Title</label>
-      <%= f.text_field :title %>
+      <#%= f.text_field :title %>
     </div>
-    <%= f.submit %>
-  <% end %>
+    <#%= f.submit %>
+  <#% end %> -->
 
 <% @led_pictures.each_slice(2) do |slice| %>
   <div class="row">
@@ -31,7 +31,7 @@
         <%= image_tag led.image.url(:medium), :class => "responsive-img image" %>
         <%= image_tag led.gif.url(:medium), :class => "responsive-img hidden gif" %>
         <h5 class="trochut"><%= led.title %></h5>
-        <h5 class = "oswald"><%= led.code %></h5>
+        <h6 class = "oswald"><%= led.code %></h6>
       </div>
     <% end %>
   </div>
