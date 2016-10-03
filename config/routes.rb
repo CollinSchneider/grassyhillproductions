@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   get '/about' => 'welcome#about'
   get '/contact' => 'welcome#contact'
+  post '/contact' => 'welcome#contact'
 
   resources :greeting_cards
   get '/cards/birthday' => 'greeting_cards#birthday'

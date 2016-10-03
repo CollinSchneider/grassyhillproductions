@@ -10,6 +10,13 @@ class WelcomeController < ApplicationController
   end
 
   def contact
+    if request.post?
+      message = params[:message]
+      subject = params[:subject]
+      from_email = params[:email]
+      from_name = params[:name]
+      Mailer.contact_email(message, from_name, from_email, subject).deliver_later
+    end
   end
 
 end
