@@ -1,26 +1,118 @@
 
 
 
-<div class="col s12 center-align">
-  <h1 class="center-align logo">Grassy Hill Productions</h1>
-  <img src="/logo.png" alt="" class="responsive-img" />
+<div class="col s12 valign-wrapper">
+  <h1 class="center-align center-block logo" style='display: inline-block'>Grassy Hill Productions</h1> <img src="/logo.png" alt="" style='width: 175px; display; inline-block; margin-left: 50px; margin-top: 50px' />
 </div>
 
-<div class="row">
-  <div class="col s12 m4 center-align">
+<a href="/led_pictures">
+  <div class="border-hover black-text col s12 m6">
+    <div class="row valign-wrapper">
+      <div class="col s12 m3 offset-m1 center-align">
+        <% if @led_picture %>
+          <%= image_tag @led_picture.gif.url(:medium), :class => 'responsive-img border' %>
+        <% end %>
+      </div>
+      <div class="col s12 m7 left-align valign trochut">
+        <h3 class="trochut center-align title">Back-Lit Canvas Art</h3>
+        <ul>
+          <li><h5>- Express love, encouragement, and even a birthday wish.</h5></li>
+          <li><h5>- Sits 6"x8", battery powered, and an on/off switch.</h5></li>
+          <li><h5>- Our very own in house artist has captured simplicity & emotion and brought them to light!</h5></li>
+        </ul>
+        <!-- <h5>
+          Our brand new canvas expressions are a step above that boring old greeting card. Giving to express love, encouragement, or even a birthday wish. Each canvas sits 8x6 inches and is battery powered with an on/off switch. The lights flicker behind the canvas to give it that additional dimension. Our very own in house artist has captured the simplicity and emotion and has brought them to "light"! Give a gift that will be remembered.
+        </h5> -->
+      </div>
+    </div>
+  </div>
+</a>
+
+<a href="/greeting_cards">
+  <div class="border-hover black-text col s12 m6">
+    <div class="row valign-wrapper">
+      <div class="col s12 m3 offset-m1 center-align">
+        <% if @greeting_card_picture %>
+          <%= image_tag @greeting_card_picture.front_image.url(:large), :class => 'responsive-img border' %>
+        <% end %>
+      </div>
+      <div class="col s12 m7 left-align valign trochut">
+        <h3 class="trochut center-align title">Greeting Cards</h3>
+        <ul>
+          <li><h5>- Express your spirit.</h5></li>
+          <li><h5>- Designed by our company artist.</h5></li>
+          <li><h5>- Original, innocent, whimisical, and never boring</h5></li>
+        </ul>
+        <!-- <h5>
+          Our brand new canvas expressions are a step above that boring old greeting card. Giving to express love, encouragement, or even a birthday wish. Each canvas sits 8x6 inches and is battery powered with an on/off switch. The lights flicker behind the canvas to give it that additional dimension. Our very own in house artist has captured the simplicity and emotion and has brought them to "light"! Give a gift that will be remembered.
+        </h5> -->
+      </div>
+    </div>
+  </div>
+</a>
+
+<a href="/guitar_string_bracelets">
+  <div class="border-hover black-text" style='margin-bottom: 20px'>
+    <div class="row valign-wrapper">
+      <div class="col s12 m3 offset-m1 center-align">
+        <img src="/guitar-1.jpeg" alt="" class="responsive-img border"/>
+      </div>
+      <div class="col s12 m7 left-align valign trochut">
+        <h3 class="trochut center-align title">Guitar String Bracelets</h3>
+        <ul>
+          <li><h5>- Handmade in the USA.</h5></li>
+          <li><h5>- Each bracelet is unique and one of a kind.</h5></li>
+          <li><h5>- Available in silver (electric), and gold (acoustic).</h5></li>
+        </ul>
+        <!-- <h5>
+          Our brand new canvas expressions are a step above that boring old greeting card. Giving to express love, encouragement, or even a birthday wish. Each canvas sits 8x6 inches and is battery powered with an on/off switch. The lights flicker behind the canvas to give it that additional dimension. Our very own in house artist has captured the simplicity and emotion and has brought them to "light"! Give a gift that will be remembered.
+        </h5> -->
+      </div>
+    </div>
+  </div>
+</a>
+
+<style media="screen">
+  .border-hover {
+    border: 1px solid rgb(213, 213, 213);
+    border-radius: 15px;
+    transition: .3s;
+    margin-top: 15px;
+  }
+  .border-hover:hover {
+    border: 1px solid black;
+    background: rgb(240, 240, 240);
+  }
+  .border-hover .title {
+    transition: .3s;
+    font-size: 50px;
+  }
+  .border-hover:hover .title {
+    font-size: 55px;
+  }
+</style>
+<script>
+  $('.border-hover').mouseover(function(){
+    console.log('hover');
+    $(this).find('.title').css({
+      color: 'rgb(201, 140, 19)'
+    })
+  })
+  $('.border-hover').mouseleave(function(){
+    console.log('hover');
+    $(this).find('.title').css({
+      color: 'black'
+    })
+  })
+</script>
+<!--
+<div class="row center-align">
+  <div class="col s12 m4 offset-m2 center-align">
     <a href="/greeting_cards">
       <h3 class="trochut black-text" style="text-decoration:underline">Greeting Cards</h3>
-      <% if @greeting_card_picture %>
-        <%= image_tag @greeting_card_picture.front_image.url(:large), :class => 'responsive-img' %>
-      <% end %>
-    </a>
-  </div>
-  <div class="col s12 m4 center-align">
-    <a href="/led_pictures">
-      <h3 class="trochut black-text" style="text-decoration:underline">Back-Lit Canvas Art</h3>
-      <% if @led_picture %>
-        <%= image_tag @led_picture.image.url(:medium), :class => 'responsive-img' %>
-      <% end %>
+      <#% if @greeting_card_picture %>
+      <#%= image_tag @greeting_card_picture.front_image.url(:large), :class => 'responsive-img' %>
+      <#% end %>
     </a>
   </div>
   <div class="col s12 m4 center-align">
@@ -29,7 +121,7 @@
       <img src="/guitar-1.jpeg" alt="" class="responsive-img"/>
     </a>
   </div>
-</div>
+</div> -->
 
 <script>
   $(document).ready(function(){
