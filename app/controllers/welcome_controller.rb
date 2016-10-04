@@ -15,7 +15,7 @@ class WelcomeController < ApplicationController
       subject = params[:subject]
       from_email = params[:email]
       from_name = params[:name]
-      Mailer.contact_email(message, from_name, from_email, subject).deliver_later
+      Mailer.contact_email(message, from_name, from_email, subject).deliver!
     end
   end
 
