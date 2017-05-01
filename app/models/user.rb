@@ -1,9 +1,10 @@
 class User < ActiveRecord::Base
+  has_secure_password
 
-  validates :email, uniqueness: true
-  validates :password, confirmation: true
+  after_create :downcase
 
-  has_one :retailer
-  has_one :admin
+  def downcase
+    update_column(:username, username.downcase)
+  end
 
 end

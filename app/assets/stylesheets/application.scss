@@ -46,3 +46,19 @@ nav {
 .oswald {
   font-family: 'Oswald', sans-serif;
 }
+
+@media(min-width: 800px) {
+  .led-picture {
+    //min-height: 500px;
+  }
+}
+@media(min-width: 1000px) {
+  .led-picture {
+    //min-height: 600px;
+  }
+}
+@media(min-width: 1200px) {
+  .led-picture {
+    //min-height: 700px;
+  }
+}

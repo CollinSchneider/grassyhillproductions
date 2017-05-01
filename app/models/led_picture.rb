@@ -1,15 +1,43 @@
 class LedPicture < ActiveRecord::Base
 
+  validates :code, presence: true
+  validates :title, presence: true
+  validates :type, presence: true
+
+  scope :live, -> { where("discontinued = #{false}") }
+  scope :discontinued, -> { where("discontinued = #{true}") }
+
+end
+
+class Horizontal < LedPicture
   has_attached_file :image,
-    styles: { medium: "253x450!"},
-    # :default_url => "************",
-    # :storage => :s3,
-    :bucket => 'grassy-hill-productions-1'
-    # :s3_credentials => S3_CREDENTIALS (we set this in an initializer)
-    validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
+                    styles: { medium: '800x600!'},
+                    :bucket => 'grassy-hill-productions-1'
+  validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
   has_attached_file :gif,
-    styles: { medium: "400x300!" },
-    :bucket => 'grassy-hill-productions-1'
+                    styles: { medium: '800x600!' },
+                    :bucket => 'grassy-hill-productions-1'
+end
 
+class Vertical < LedPicture
+  has_attached_file :image,
+                    styles: { medium: '600x800!'},
+                    :bucket => 'grassy-hill-productions-1'
+  validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
+
+  has_attached_file :gif,
+                    styles: { medium: '600x800!' },
+                    :bucket => 'grassy-hill-productions-1'
+end
+
+class Square < LedPicture
+  has_attached_file :image,
+                    styles: { medium: '600x600!'},
+                    :bucket => 'grassy-hill-productions-1'
+  validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
+
+  has_attached_file :gif,
+                    styles: { medium: '600x600!' },
+                    :bucket => 'grassy-hill-productions-1'
 end

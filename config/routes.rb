@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   post '/contact' => 'welcome#contact'
 
   resources :greeting_cards
+  post 'discontinue/greeting_cards/:id' => 'led_picture#discontinue', as: :discontinue_greeting_card
+  post 'recontinue/greeting_cards/:id' => 'led_picture#recontinue', as: :recontinue_greeting_card
   get '/cards/birthday' => 'greeting_cards#birthday'
   get '/cards/sympathy'  => 'greeting_cards#sympathy'
   get '/cards/thank_you' => 'greeting_cards#thank_you'
@@ -17,7 +19,18 @@ Rails.application.routes.draw do
   get '/cards/congratulations' => 'greeting_cards#congratulations'
   get '/cards/anniversary' => 'greeting_cards#anniversary'
   resources :led_pictures
+  post 'discontinue/led_picture/:id' => 'led_pictures#discontinue', as: :discontinue_led_picture
+  post 'recontinue/led_picture/:id' => 'led_pictures#recontinue', as: :recontinue_led_picture
   resources :guitar_string_bracelets
+
+  post '/sessions' => 'sessions#create'
+
+	resources :users
+	get '/admin' => 'admin#index'
+
+  get '/admin/logged_in' => 'admin#logged_in'
+  get '/admin/logged_in/led_pictures' => 'admin#led_pictures'
+  get '/admin/logged_in/greeting_cards' => 'admin#greeting_cards'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

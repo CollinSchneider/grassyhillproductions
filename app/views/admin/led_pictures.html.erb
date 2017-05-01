@@ -1,0 +1,134 @@
+<% if flash[:success] %>
+  <div class="center-align">
+    <h5 class="green-text">Message to Dad: <%= flash[:success]%> </h5>
+  </div>
+<% end %>
+
+<h6><a href="/admin/logged_in/greeting_cards">View/Edit Greeting Cards</a></h6>
+
+<div class="center-align">
+  <h5>Upload LED Picture:</h5>
+  <%= form_for @led_picture do |f| %>
+    <div class="file-field input-field">
+      <div class="btn">
+        <span>Image</span>
+        <%= f.file_field :image %>
+      </div>
+      <div class="file-path-wrapper">
+        <input class="file-path validate" type="text">
+      </div>
+    </div>
+    <div class="file-field input-field">
+      <div class="btn">
+        <span>GIF</span>
+        <%= f.file_field :gif %>
+      </div>
+      <div class="file-path-wrapper">
+        <input class="file-path validate" type="text">
+      </div>
+    </div>
+    <div class="input-field">
+      <label>Code</label>
+      <%= f.text_field :code %>
+    </div>
+    <div class="input-field">
+      <label>Title</label>
+      <%= f.text_field :title %>
+    </div>
+    <div class="input-field">
+      <input type="radio" id="horizontal" name="led_picture[type]" value="Horizontal"/>
+      <label for="horizontal">Is this a horizontal picture?</label>
+
+      <input type="radio" id="vertical" name="led_picture[type]" value="Vertical"/>
+      <label for="vertical">Is this a vertical picture?</label>
+
+      <input type="radio" id="square" name="led_picture[type]" value="Square"/>
+      <label for="square">Is this a square picture?</label>
+    </div><br>
+    <input type="submit" class="btn btn-primary">
+  <% end %>
+
+  <br><br><br>
+
+  <h5>Live LEDS:</h5>
+  <div class="row">
+    <% @live_leds.each do |led| %>
+      <div class="col s12 m6 center-align" style="padding:5px 25px 5px 25px">
+        <div class="led-picture border">
+        <!--<div class="col s12 m6 led-picture center-align ">-->
+          <%= image_tag led.image.url(:medium), :class => "responsive-img image" %>
+          <%= image_tag led.gif.url(:medium), :class => "responsive-img hidden gif" %>
+          <h5 class="trochut"><%= led.title %></h5>
+          <h6 class = "oswald"><%= led.code %></h6>
+          <%= button_to "Discontinue #{led.code}", discontinue_led_picture_path(led), method: :post, :class => 'btn orange' %>
+          <%= button_to "Delete #{led.code}", led_picture_path(led), method: :delete, :class => 'btn red' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <br><br><br>
+  <h5>Discontinued LEDS:</h5>
+  <% @discontinued_leds.each_slice(2) do |slice| %>
+      <div class="row">
+        <% slice.each do |led| %>
+            <div class="col s12 m6 led-picture center-align">
+              <!-- <img src="/play.png" alt="" class="play-button responsive-img" /> -->
+              <%= image_tag led.image.url(:medium), :class => "responsive-img image" %>
+              <%= image_tag led.gif.url(:medium), :class => "responsive-img hidden gif" %>
+              <h5 class="trochut"><%= led.title %></h5>
+              <h6 class = "oswald"><%= led.code %></h6>
+              <%= button_to "Make #{led.code} live", recontinue_led_picture_path(led), method: :post, :class => 'btn green' %>
+              <%= button_to "Delete #{led.code}", led_picture_path(led), method: :delete, :class => 'btn red' %>
+            </div>
+        <% end %>
+      </div>
+  <% end %>
+
+  <script>
+    $(document).ready(function(){
+      $('select').material_select();
+    })
+
+    $('.image').mouseover(function(){
+      gifSwap($(this))
+    })
+
+    $('.image').click(function(){
+      gifSwap($(this))
+    })
+
+    $('.gif').click(function(){
+      var ledDiv = $(this).parent();
+      var image = ledDiv.find('.image')
+      // var playButton = ledDiv.find('.play-button')
+      $(this).attr('class', 'responsive-img gif hidden')
+      image.attr('class', 'responsive-img image')
+      // playButton.attr('class', 'responsive-img play-button')
+    })
+
+    function gifSwap(image){
+      var ledDiv = image.parent();
+      var gif = ledDiv.find('.gif');
+      // var playButton = ledDiv.find('.play-button')
+      $('.gif').each(function(){
+        $(this).attr('class', 'responsive-img gif hidden')
+      })
+      $('.image').each(function(){
+        $(this).attr('class', 'responsive-img image')
+      })
+      // $('.play-button').each(function(){
+      //   $(this).attr('class', 'responsive-img play-button')
+      // })
+      image.attr('class', 'responsive-img image hidden');
+      // playButton.attr('class', 'responsive-img play-button hidden')
+      gif.attr('class', 'responsive-img gif');
+    }
+
+    $('form').submit(function(){
+      $(this).find('.btn').attr('disabled', 'disabled');
+      $(this).find('.btn').val("It's loading dad...");
+    })
+  </script>
+
+</div>

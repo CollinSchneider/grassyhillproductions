@@ -1,11 +1,13 @@
 class GreetingCardsController < ApplicationController
 
   def create
+    return false if current_user.nil?
     GreetingCard.create(greeting_card_params)
     redirect_to request.referrer
   end
 
   def destroy
+    return false if current_user.nil?
     greeting_card = GreetingCard.find(params[:id])
     greeting_card.destroy
     redirect_to request.referrer
@@ -21,27 +23,27 @@ class GreetingCardsController < ApplicationController
   end
 
   def birthday
-    @cards = GreetingCard.where('category = ?', 'Birthday')
+    @cards = GreetingCard.where('category = ?', 'Birthday').live
   end
 
   def sympathy
-    @cards = GreetingCard.where('category = ?', 'Sympathy')
+    @cards = GreetingCard.where('category = ?', 'Sympathy').live
   end
 
   def thank_you
-    @cards = GreetingCard.where('category = ?', 'Thank You')
+    @cards = GreetingCard.where('category = ?', 'Thank You').live
   end
 
   def love
-    @cards = GreetingCard.where('category = ?', 'Love')
+    @cards = GreetingCard.where('category = ?', 'Love').live
   end
 
   def congratulations
-    @cards = GreetingCard.where('category = ?', 'Congratulations')
+    @cards = GreetingCard.where('category = ?', 'Congratulations').live
   end
 
   def anniversary
-    @cards = GreetingCard.where('category = ?', 'Anniversary')
+    @cards = GreetingCard.where('category = ?', 'Anniversary').live
   end
 
   private

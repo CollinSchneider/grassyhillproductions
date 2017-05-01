@@ -1,41 +1,19 @@
 
 <h1 class="center-align trochut" style="text-decoration:underline">Back-Lit Canvas Art</h1>
 
-
-<!-- <div class="center-align row">
-  <#%= form_for LedPicture.new do |f| %>
-    <div class="input-field">
-      <label>Image</label>
-      <#%= f.file_field :image %>
-    </div>
-    <div class="input-field">
-      <label>Gif</label>
-      <#%= f.file_field :gif %>
-    </div>
-    <div class="input-field">
-      <label>Code</label>
-      <#%= f.text_field :code %>
-    </div>
-    <div class="input-field">
-      <label>Title</label>
-      <#%= f.text_field :title %>
-    </div>
-    <#%= f.submit %>
-  <#% end %> -->
-
-<% @led_pictures.each_slice(2) do |slice| %>
-  <div class="row">
-    <% slice.each do |led| %>
-      <div class="col s12 m6 led-picture center-align">
-        <!-- <img src="/play.png" alt="" class="play-button responsive-img" /> -->
-        <%= image_tag led.image.url(:medium), :class => "responsive-img image" %>
-        <%= image_tag led.gif.url(:medium), :class => "responsive-img hidden gif" %>
-        <h5 class="trochut"><%= led.title %></h5>
-        <h6 class = "oswald"><%= led.code %></h6>
+<div class="row">
+  <% @led_pictures.each do |led| %>
+      <div class="col s12 m6 center-align valign-wrapper" style="padding:5px 50px 5px 50px; height: 600px">
+        <div class="led-picture border valign">
+          <!--<div class="col s12 m6 led-picture center-align ">-->
+          <%= image_tag led.image.url(:medium), :class => "responsive-img image" %>
+          <%= image_tag led.gif.url(:medium), :class => "responsive-img hidden gif" %>
+          <h5 class="trochut"><%= led.title %></h5>
+          <h6 class = "oswald"><%= led.code %></h6>
+        </div>
       </div>
-    <% end %>
-  </div>
-<% end %>
+  <% end %>
+</div>
 
 <div class="row center-align">
   <div class="col s6 offset-s3">

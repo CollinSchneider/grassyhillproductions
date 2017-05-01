@@ -1,6 +1,6 @@
 class CreateLedPictures < ActiveRecord::Migration
   def change
-    create_table :led_pictures do |t|
+    create_table :led_picture do |t|
       t.string :code
 
       t.timestamps null: false
