@@ -25,9 +25,6 @@ development:
   <<: *default
   database: grassyHillProudctions_development
   host: localhost
-  port: 15432
-  username: jastr
-  password: jastr
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
