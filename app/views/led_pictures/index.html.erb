@@ -1,5 +1,5 @@
 
-<h1 class="center-align trochut" style="text-decoration:underline">Say it in Lights</h1>
+<h1 class="center-align trochut">Say it in Lights</h1>
 
 
 <!--<div class="center-align row">-->
@@ -31,15 +31,18 @@
         <%= image_tag led.image.url(:medium), :class => "responsive-img image" %>
         <%= image_tag led.gif.url(:medium), :class => "responsive-img hidden gif" %>
         <h5 class="trochut"><%= led.title %></h5>
-        <h6 class = "oswald"><%= led.code %></h6>
+        <h6 class = "oswald"><%= led.code %>  ($16.95)</h6>
       </div>
     <% end %>
   </div>
 <% end %>
 
 <div class="row center-align">
-  <div class="col s6 offset-s3">
-    <img src="/back.jpeg" alt="" class="responsive-img"/>
+  <div class="col s6">
+    <img src="/back-view.jpg" alt="" class="responsive-img"/>
+  </div>
+  <div class="col s6">
+    <img src="/display.jpg" alt="" class="responsive-img"/>
   </div>
 </div>
 
