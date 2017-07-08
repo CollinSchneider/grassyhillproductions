@@ -9,7 +9,7 @@ class LedPicture < ActiveRecord::Base
     validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
   has_attached_file :gif,
-    styles: { medium: "400x300!" },
+    styles: { medium: "850x475!" },
     :bucket => 'grassy-hill-productions-1'
 
 end

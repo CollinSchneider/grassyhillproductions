@@ -2,26 +2,26 @@
 <h1 class="center-align trochut" style="text-decoration:underline">Say it in Lights</h1>
 
 
-<!-- <div class="center-align row">
-  <#%= form_for LedPicture.new do |f| %>
+<div class="center-align row">
+  <%= form_for LedPicture.new do |f| %>
     <div class="input-field">
       <label>Image</label>
-      <#%= f.file_field :image %>
+      <%= f.file_field :image %>
     </div>
     <div class="input-field">
       <label>Gif</label>
-      <#%= f.file_field :gif %>
+      <%= f.file_field :gif %>
     </div>
     <div class="input-field">
       <label>Code</label>
-      <#%= f.text_field :code %>
+      <%= f.text_field :code %>
     </div>
     <div class="input-field">
       <label>Title</label>
-      <#%= f.text_field :title %>
+      <%= f.text_field :title %>
     </div>
-    <#%= f.submit %>
-  <#% end %> -->
+    <%= f.submit %>
+  <% end %>
 
 <% @led_pictures.each_slice(2) do |slice| %>
   <div class="row">
