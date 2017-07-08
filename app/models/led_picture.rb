@@ -1,7 +1,7 @@
 class LedPicture < ActiveRecord::Base
 
   has_attached_file :image,
-    styles: { medium: "253x450!"},
+    styles: { medium: "850x475!"},
     # :default_url => "************",
     # :storage => :s3,
     :bucket => 'grassy-hill-productions-1'
