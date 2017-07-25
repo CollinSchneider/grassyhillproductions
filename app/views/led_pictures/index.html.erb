@@ -30,8 +30,12 @@
         <!-- <img src="/play.png" alt="" class="play-button responsive-img" /> -->
         <%= image_tag led.image.url(:medium), :class => "responsive-img image" %>
         <%= image_tag led.gif.url(:medium), :class => "responsive-img hidden gif" %>
-        <h5 class="trochut"><%= led.title %></h5>
-        <h6 class = "oswald"><%= led.code %>  ($16.95)</h6>
+        <% if led.title %><h5 class="trochut"><%= led.title %></h5><% end %>
+        <% if led.code %>
+          <h6 class = "oswald"><%= led.code %>  ($16.95)</h6>
+        <% else %>
+            <h6 class = "oswald">($16.95)</h6>
+        <% end %>
       </div>
     <% end %>
   </div>
