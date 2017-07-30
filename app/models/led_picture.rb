@@ -22,7 +22,7 @@ class LedPicture < ActiveRecord::Base
       title = dir_names[1]
       led_exists = LedPicture.find_by(code: code)
       if led_exists
-        already_created << "#{code} already exists, cannot add. "
+        already_created << "#{code} already exists, cannot add"
       else
         puts "Adding #{title}....."
         led = LedPicture.create(code: code, title: title)
@@ -36,7 +36,7 @@ class LedPicture < ActiveRecord::Base
         led.save!
       end
     end
-    return already_created.join(',') if already_created.any?
+    return already_created.join(', ') if already_created.any?
     return 'Upload Successful!'
   end
 
